@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from fastapi import FastAPI
+from contextlib import contextmanager, asynccontextmanager
+from app.db.main import init_db
+from app.routes.auth import router as auth_router
+from fastapi.staticfiles import StaticFiles
 
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+@asynccontextmanager
+async def lifespan(app : FastAPI) :
+    print("creating tables...")
+    await init_db()
+    print("tables created")
+    yield
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+app = FastAPI(lifespan=lifespan)
 
+app.include_router(auth_router)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+app.mount("/",StaticFiles(directory= "static" , html = True) , name = "static")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
