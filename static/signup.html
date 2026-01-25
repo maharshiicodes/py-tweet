@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SignUp- PyTweet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class= "bg-black text-white flex items-center justify-center h-screen relative overflow-hidden">
+    <div class="relative z-10 bg-black border border-white/10 p-8 rounded-2xl shadow-[0px_0px_30px_0px_rgba(255,255,255,0.5)] w-96">
+        <h1 class="text-3xl font-bold mb-2 text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400 hover:text-blue-500">
+            PyTweet
+        </h1>
+        <p class="text-neutral-500 text-sm text-center mb-8">See whats's happening in the world right now</p>
+        <form id="signUpForm" class="space-y-5">
+            <div>
+                <label class="block text-xs font-medium text-neutral-400 mb-1 ml-1 uppercase">Username</label>
+                <input type="text" id="username"
+                    class="w-full p-2.5 rounded-lg bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
+                    placeholder="John Doe" required>
+            </div>
+          <div>
+                <label class="block text-xs font-medium text-neutral-400 mb-1 ml-1 uppercase">Email</label>
+                <input type="text" id="email"
+                    class="w-full p-2.5 rounded-lg bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
+                    placeholder="elon@twitter.com" required>
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-neutral-400 mb-1 ml-1 uppercase">Password</label>
+                <input type="password" id="signup-password"
+                    class="w-full p-2.5 rounded-lg bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
+                    placeholder="••••••••" required>
+            </div>
+            <button type="submit"
+                class="w-full bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white py-2.5 rounded-lg font-semibold shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all transform active:scale-95">
+                Create Account
+            </button>
+        </form>
+
+        <p id="signup-message" class="mt-6 text-center text-sm font-medium"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
