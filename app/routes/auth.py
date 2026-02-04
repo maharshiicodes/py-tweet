@@ -50,4 +50,8 @@ async def login_user(user_credentials : User_Login , session : AsyncSession = De
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
         )
-    return {"message" : "Login successfull"}
+    return {
+        "message" : "Login successfull",
+        "user_id" : user.id,
+        "username" : user.username,
+    }

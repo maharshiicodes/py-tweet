@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black text-white flex justify-center min-h-screen">
+    <div class="w-full max-w-lg bg-black border border-gray-700 rounded-xl mt-10 p-4 relative">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold">Edit profile</h2>
+            <button id="btn-save" class="bg-white text-black px-4 py-1.5 rounded-full font-bold hover:bg-gray-200 transition">
+                Save
+            </button>
+        </div>
 
+        <div class="relative w-full h-32 bg-gray-800 overflow-hidden group">
+            <img id="preview-banner" src="" alt="Banner" class="w-full h-full object-cover opacity-80">
+
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition cursor-pointer">
+                <label for="input-banner" class="cursor-pointer p-2 bg-gray-900/50 rounded-full hover:bg-gray-700/50">
+                    📷 </label>
+            </div>
+            <input type="file" id="input-banner" accept="image/*" class="hidden">
+        </div>
+
+        <div class="relative -mt-12 ml-4 w-24 h-24 rounded-full border-4 border-black overflow-hidden group">
+            <img id="preview-profile" src="" alt="Profile" class="w-full h-full object-cover">
+
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition cursor-pointer">
+                <label for="input-profile" class="cursor-pointer p-2 bg-gray-900/50 rounded-full hover:bg-gray-700/50">
+                    📷
+                </label>
+            </div>
+            <input type="file" id="input-profile" accept="image/*" class="hidden">
+        </div>
+
+        <div class="mt-6 px-2">
+            <div class="border border-gray-700 rounded p-2 focus-within:border-blue-500 transition">
+                <label class="block text-gray-500 text-sm">Bio</label>
+                <textarea
+                    id="input-bio"
+                    class="w-full bg-transparent text-white focus:outline-none mt-1 resize-none"
+                    rows="3"
+                    placeholder="Add a bio to your profile"
+                ></textarea>
+            </div>
+        </div>
+    </div>
+    <script src = "update-profile.js">
+    </script>
 </body>
 </html>

@@ -2,9 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home / PyTweet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-black text-white">
 
+    <div class="container mx-auto flex h-screen max-w-6xl">
+
+        <div class="w-1/4 p-4 border-r border-gray-800 hidden md:block">
+            <h1 class="text-3xl font-bold mb-8 pl-4">PyTweet</h1>
+            <nav class="space-y-4 text-xl">
+                <a href="#" class="block py-2 px-4 rounded-full hover:bg-gray-900 font-bold"><i class="fas fa-home mr-4"></i>Home</a>
+                <a href="profile.html" class="block py-2 px-4 rounded-full hover:bg-gray-900"><i class="fas fa-user mr-4"></i>Profile</a>
+                <button onclick="logout()" class="block w-full text-left py-2 px-4 rounded-full hover:bg-red-900/30 text-red-500"><i class="fas fa-sign-out-alt mr-4"></i>Logout</button>
+            </nav>
+        </div>
+
+        <div class="w-full md:w-2/4 border-r border-gray-800 overflow-y-scroll no-scrollbar">
+
+            <div class="p-4 border-b border-gray-800">
+                <textarea id="tweetContent" class="w-full bg-black text-xl outline-none placeholder-gray-600 resize-none" rows="3" placeholder="What is happening?!"></textarea>
+                <div class="flex justify-between items-center mt-2">
+                    <div class="text-blue-500 text-sm"><i class="fas fa-image"></i></div>
+                    <button onclick="postTweet()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition">
+                        Post
+                    </button>
+                </div>
+            </div>
+
+            <div id="feed" class="pb-20">
+                <div class="text-center text-gray-600 mt-10">Loading tweets...</div>
+            </div>
+        </div>
+
+        <div class="w-1/4 p-4 hidden md:block">
+            <div class="bg-gray-900 rounded-xl p-4">
+                <h2 class="font-bold text-xl mb-4">Who to follow</h2>
+                <div class="text-gray-500">Coming soon...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="feed.js"></script>
 </body>
 </html>
