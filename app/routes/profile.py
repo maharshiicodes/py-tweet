@@ -1,10 +1,11 @@
+from typing import List
 from fastapi import APIRouter,HTTPException,status,Depends,Form,UploadFile,File,Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 from sqlmodel import select,func,col
-from app.db.models import User,UserFollow
+from app.db.models import User,UserFollow,Tweet
 from app.db.main import get_session
-from app.schemas import User_Profile
+from app.schemas import User_Profile,TweetPost
 import shutil
 import os
 
@@ -14,7 +15,7 @@ router = APIRouter()
 @router.get("/{username}", response_model=User_Profile)
 async def get_profile_details(
         username: str,
-        current_user_id: int = Query(None),  # Frontend sends this so we know if YOU follow them
+        current_user_id: int = Query(None),
         session: AsyncSession = Depends(get_session)
 ):
 
@@ -57,6 +58,15 @@ async def get_profile_details(
         is_following=is_following
     )
 
+@router.get("/tweet/{user_id}",response_model =  List[TweetPost] or None)
+async def get_personal_tweets(user_id : int , session: AsyncSession = Depends(get_session)):
+    statement = select(Tweet).where(Tweet.user_id == user_id).order_by(Tweet.created_at.desc())
+    result = await session.execute(statement)
+    tweets = result.scalars().all()
+
+    if not tweets:
+        raise HTTPException(status_code=404, detail="tweets not found")
+    return tweets
 
 @router.post("/follow/{target_username}")
 async def toggle_follow(
@@ -64,7 +74,7 @@ async def toggle_follow(
         current_user_id: int = Query(...),
         session: AsyncSession = Depends(get_session)
 ):
-    # Find the target user
+
     statement = select(User).where(User.username == target_username)
     target_user = (await session.execute(statement)).scalars().first()
 
@@ -74,7 +84,7 @@ async def toggle_follow(
     if target_user.id == current_user_id:
         raise HTTPException(status_code=400, detail="You cannot follow yourself")
 
-    # Check if already following
+
     check_stmt = select(UserFollow).where(
         UserFollow.follower_id == current_user_id,
         UserFollow.followed_id == target_user.id

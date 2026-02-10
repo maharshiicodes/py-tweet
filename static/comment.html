@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tweet & Replies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white min-h-screen">
+
+    <div class="container mx-auto max-w-xl border-x border-gray-800 min-h-screen">
+
+        <div class="p-3 border-b border-gray-800 flex items-center gap-4">
+            <a href="index.html" class="hover:bg-gray-900 p-2 rounded-full"><i class="fas fa-arrow-left"></i></a>
+            <h2 class="font-bold text-xl">Post</h2>
+        </div>
+
+        <div id="main-tweet" class="p-4 border-b border-gray-800">
+            <p class="text-gray-500">Loading tweet...</p>
+        </div>
+
+        <div class="p-4 border-b border-gray-800 flex gap-3">
+            <div class="h-10 w-10 rounded-full bg-gray-600 flex-shrink-0">
+                </div>
+            <div class="flex-1">
+                <textarea id="comment-input" class="w-full bg-transparent text-white text-lg outline-none resize-none" placeholder="Post your reply" rows="2"></textarea>
+                <div class="text-right mt-2">
+                    <button onclick="postComment()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1.5 px-4 rounded-full">
+                        Reply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="comments-list"></div>
+    </div>
+
+    <script src="comment.js"></script>
+</body>
+</html>

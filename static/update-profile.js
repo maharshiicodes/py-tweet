@@ -18,7 +18,7 @@ async function loadCurrentProfile() {
 
         if (user.profile_pic) {
             const profileImg = document.getElementById("preview-profile");
-            // If the backend sends a relative path, prepend the API URL
+
             profileImg.src = user.profile_pic.startsWith("http") ? user.profile_pic : `${API_BASE_URL}/${user.profile_pic}`;
         }
         

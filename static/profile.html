@@ -6,6 +6,7 @@
     <title>Profile - PyTweet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/images/john_banner.jpg" type="image/x-icon">
 </head>
 <body class="bg-black text-white">
 
@@ -61,10 +62,14 @@
                 </div>
             </div>
 
-            <div class="border-b border-gray-800 mt-4">
-                <div class="w-fit p-4 border-b-4 border-blue-500 font-bold">Tweets</div>
+            <div class="flex border-b border-gray-800 mt-4">
+                <button onclick="switchTab('posts')" id="tab-posts" class="flex-1 hover:bg-white/10 py-4 font-bold border-b-4 border-blue-500 text-white transition">
+                    Posts
+                </button>
+                <button onclick="switchTab('saved')" id="tab-saved" class="flex-1 hover:bg-white/10 py-4 font-medium text-gray-500 border-b-4 border-transparent transition">
+                    Saved
+                </button>
             </div>
-
             <div id="personal-feed" class="pb-20">
                 </div>
 

@@ -53,3 +53,20 @@ class User_Profile(BaseModel):
 
     class Config:
         from_attributes = True
+
+#5.Schema for Comment
+class UserRead(BaseModel):
+     username : str
+     profile_pic : Optional[str] = None
+
+     class Config:
+         from_attributes = True
+
+class CommentOut(BaseModel):
+    id : int
+    content: str
+    created_at: datetime
+    user : Optional[UserRead] = None
+
+    class Config:
+        from_attributes = True

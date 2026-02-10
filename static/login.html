@@ -6,7 +6,7 @@
     <title>Login - PyTweet</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-white flex items-center justify-center h-screen relative overflow-hidden">
+<body class="bg-black text-white flex items-center justify-center h-screen relative overflow-hidden">
     <div class="relative z-10 bg-black border border-white/10 p-8 rounded-2xl shadow-[0px_0px_50px_0px_rgba(0,0,0,0.5)] w-96">
         <h1 class="text-3xl font-bold mb-2 text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400">
             PyTweet
@@ -30,6 +30,10 @@
                 Sign In
             </button>
         </form>
+       <p class="mt-4 text-center text-sm text-neutral-500">
+            Don't have an account?
+            <a href="signup.html" class="text-blue-500 hover:text-blue-400 hover:underline font-medium transition-colors">Sign up</a>
+        </p>
 
         <p id="message" class="mt-6 text-center text-sm font-medium"></p>
     </div>

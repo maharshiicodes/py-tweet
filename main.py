@@ -13,6 +13,7 @@ async def lifespan(app : FastAPI) :
     await init_db()
     print("tables created")
     yield
+    print("Server is closing");
 
 
 app = FastAPI(lifespan=lifespan)
