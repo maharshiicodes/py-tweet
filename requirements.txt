@@ -45,3 +45,4 @@ uvicorn==0.40.0
 uvloop==0.22.1
 watchfiles==1.1.1
 websockets==16.0
+bcrypt==4.3.0
