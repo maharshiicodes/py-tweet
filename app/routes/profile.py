@@ -30,10 +30,8 @@ async def get_profile_details(
     followers_query = select(func.count(UserFollow.id)).where(UserFollow.followed_id == user.id)
     followers_count = (await session.execute(followers_query)).one()[0]
 
-
     following_query = select(func.count(UserFollow.id)).where(UserFollow.follower_id == user.id)
     following_count = (await session.execute(following_query)).one()[0]
-
 
     is_following = False
     if current_user_id:
