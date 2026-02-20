@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "";
 const urlParams = new URLSearchParams(window.location.search);
 const myUsername = localStorage.getItem("username");
 const currentUserId = localStorage.getItem("user_id");
@@ -30,12 +30,12 @@ async function loadProfile(username) {
 
         if (user.profile_pic) {
             const imgEl = document.getElementById("profile-display");
-            const cleanPath = user.profile_pic.startsWith("http") ? user.profile_pic : `${API_BASE_URL}/${user.profile_pic}`;
+            const cleanPath = user.profile_pic.startsWith("http") ? user.profile_pic : `/${user.profile_pic}`;
             if(imgEl) imgEl.src = `${cleanPath}?t=${Date.now()}`;
         }
         if (user.banner_pic) {
             const bannerEl = document.getElementById("banner-display");
-            const cleanPath = user.banner_pic.startsWith("http") ? user.banner_pic : `${API_BASE_URL}/${user.banner_pic}`;
+            const cleanPath = user.banner_pic.startsWith("http") ? user.banner_pic : `/${user.banner_pic}`;
             if(bannerEl) {
                 bannerEl.src = `${cleanPath}?t=${Date.now()}`;
                 bannerEl.classList.remove("hidden");
@@ -119,7 +119,7 @@ async function loadPersonalTweets(targetUserId) {
             ? `/profile/${targetUserId}/saved`
             : `/profile/${targetUserId}/posts`;
 
-        const response = await fetch(`${API_BASE_URL}${endpoint}`);
+        const response = await fetch(`${endpoint}`);
         if (!response.ok) throw new Error("Failed to fetch tweets");
 
         const tweets = await response.json();
