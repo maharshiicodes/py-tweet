@@ -36,7 +36,7 @@ async function loadFeed() {
             if (tweet.user && tweet.user.profile_pic) {
                 profilePic = tweet.user.profile_pic.startsWith("http")
                     ? tweet.user.profile_pic
-                    : `http://127.0.0.1:8000/${tweet.user.profile_pic}`;
+                    : `/${tweet.user.profile_pic}`;
             }
 
             const username = tweet.user ? tweet.user.username : 'unknown';
